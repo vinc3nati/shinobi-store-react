@@ -1,0 +1,38 @@
+.feature-box {
+  cursor: pointer;
+  box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px,
+    rgba(17, 17, 26, 0.1) 0px 0px 8px;
+  position: relative;
+  max-width: 250px;
+  width: 100%;
+  height: 35rem;
+  padding: 0.8rem;
+  background: linear-gradient(
+    to bottom,
+    var(--color-primary-light),
+    var(--color-tertiary)
+  );
+  border-radius: var(--border-radius-3);
+  transition: transform 0.3s;
+}
+
+.feature-box:hover {
+  transform: scale(1.05);
+}
+
+.feature-box .img {
+  object-position: center;
+  object-fit: contain;
+  height: 100%;
+  opacity: 0.5;
+}
+
+.feature-box .feature-text {
+  font-size: 2.5rem;
+  font-weight: 700;
+  position: absolute;
+  color: var(--color-grey-dark-3);
+  top: 90%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
