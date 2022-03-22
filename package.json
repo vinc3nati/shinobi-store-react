@@ -2,6 +2,7 @@
   "name": "e-commerce-app",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:3000",
   "dependencies": {
     "axios": "^0.21.4",
     "dayjs": "^1.10.7",
