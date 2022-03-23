@@ -13,7 +13,6 @@ import { ACTIONS } from "../../utilities/constant";
 export const ProductCard = ({ product }) => {
   const {
     _id,
-    id,
     image,
     title,
     category,
