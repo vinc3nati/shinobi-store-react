@@ -1,5 +1,5 @@
 import React from "react";
-import { useData } from "../../contexts/product-context";
+import { useData } from "../../contexts/data-context";
 import { ACTIONS, FILTERS, SortBy } from "../../utilities/constant";
 
 const ratings = ["4", "3", "2", "1"];

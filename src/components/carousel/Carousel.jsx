@@ -1,8 +1,11 @@
 import React, { Children, cloneElement, useState, useEffect } from "react";
 import { useSwipeable } from "react-swipeable";
 
-export const CarouselItem = ({ children, width }) => (
-  <div className="carousel-item" style={{ width: width }}>
+export const CarouselItem = ({ children, active, index }) => (
+  <div
+    className="carousel-item"
+    style={active === index ? { display: "flex" } : { display: "none" }}
+  >
     {children}
   </div>
 );
@@ -47,14 +50,12 @@ export const Carousel = ({ children }) => {
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
-      <div
-        className="inner"
-        style={{ transform: `translateX(-${activeIndex * 100}%)` }}
-      >
-        {Children.map(children, (child) => {
-          return cloneElement(child, { width: "100%" });
-        })}
-      </div>
+      {Children.map(children, (child, index) => {
+        return cloneElement(child, {
+          active: `${activeIndex}`,
+          index: `${index}`,
+        });
+      })}
       <div className="indicators">
         <button
           className="btn tertiary"

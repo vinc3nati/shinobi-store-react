@@ -4,8 +4,10 @@
 @import url("./components/footer/footer.css");
 @import url("./components/loader/loader.css");
 @import url("./pages/Home/home.css");
+@import url("./pages/Auth/auth.css");
 @import url("./pages/Cart/cart.css");
 @import url("./pages/Products/Product.css");
+@import url("./pages/ProductDetails/productDetails.css");
 @import url("./pages/Wishlist/wishlist.css");
 
 body {
