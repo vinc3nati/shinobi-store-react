@@ -1,5 +1,13 @@
 import React from "react";
+import { useDocumentTitle } from "../../hooks/DocumentTitle";
+import { Filters, ProductList } from "../../components/product/index";
 
 export const Products = () => {
-  return <div>Products</div>;
+  useDocumentTitle("Product");
+  return (
+    <section id="product">
+      <Filters />
+      <ProductList />
+    </section>
+  );
 };
