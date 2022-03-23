@@ -1,46 +1,71 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../../assets/store_logo_white.png";
 import { FaSearch, FaHeart, FaShoppingBag, FaUserCircle } from "react-icons/fa";
+import { useAuth } from "../../contexts/auth-context";
+import { useData } from "../../contexts/data-context";
+import { ACTIONS, FILTERS } from "../../utilities/constant";
 
 export const Navbar = () => {
+  const { user } = useAuth();
+  const { state, dispatch } = useData();
+  let navigate = useNavigate();
+
   return (
     <nav className="navbar">
       <div className="main">
         <div className="logo">
-          <a href="/">
+          <Link to="/">
             <img src={logo} alt="logo" className="img img-responsive" />
-          </a>
+          </Link>
         </div>
         <div className="search-bar">
           <button type="submit" className="btn tertiary">
             <FaSearch />
           </button>
           <div className="input-grp">
-            <input type="text" placeholder="search" />
+            <input
+              type="text"
+              value={state.filters.search}
+              onChange={(e) =>
+                dispatch({
+                  type: ACTIONS.ChangeFilters,
+                  payload: {
+                    type: FILTERS.Search,
+                    value: e.target.value,
+                  },
+                })
+              }
+              placeholder="search"
+            />
           </div>
         </div>
 
         <div className="nav-links">
           <Link to="/wishlist" className="badge">
             <FaHeart className="badge-icon" />
+            {state.wishlist.length !== 0 && (
+              <span className="number secondary">{state.wishlist.length}</span>
+            )}
           </Link>
           <Link to="/cart" className="badge">
             <FaShoppingBag className="badge-icon" />
-            <span className="number secondary">9+</span>
+            {state.cart.length !== 0 && (
+              <span className="number secondary">{state.cart.length}</span>
+            )}
           </Link>
         </div>
       </div>
       <div className="user">
-        <Link to="/auth">
-          <button className="btn icon-btn">
-            <FaUserCircle />
-            Login
-          </button>
-        </Link>
-
-        {/* <span className="text-tertiary">username</span>
-        <img className="avatar sm" src="https://source.unsplash.com/DomqHKN2Xik/" alt="avatar_1">  */}
+        <button
+          className="btn icon-btn"
+          onClick={() =>
+            user.token ? navigate("/logout") : navigate("/signup")
+          }
+        >
+          <FaUserCircle />
+          {user.token ? user.user.name : "Register"}
+        </button>
       </div>
     </nav>
   );

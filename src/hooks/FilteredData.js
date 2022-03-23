@@ -1,4 +1,4 @@
-import { useData } from "../contexts/product-context";
+import { useData } from "../contexts/data-context";
 import { SortBy } from "../utilities/constant";
 import {
   searchProducts,
@@ -7,12 +7,6 @@ import {
   filterByRating,
   sortProducts,
 } from "../utilities/productFilters";
-
-const union = (...arr) =>
-  arr.reduce((acc, curr) =>
-    //   acc.concat(curr.filter((el) => !acc.some((ele) => ele.id === el.id))),
-    acc.filter((item) => curr.includes(item))
-  );
 
 export const useFilteredData = () => {
   const {

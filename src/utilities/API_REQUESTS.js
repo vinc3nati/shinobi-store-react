@@ -1,5 +1,18 @@
 import axios from "axios";
 
+export const loginUser = async ({ email, password }) =>
+  await axios.post("/api/auth/login", {
+    email,
+    password,
+  });
+
+export const signupUser = async ({ name, email, password }) =>
+  await axios.post("/api/auth/signup", {
+    email,
+    password,
+    name,
+  });
+
 export const getProducts = async () => await axios.get("/api/products");
 
 export const getCategories = async () => await axios.get("/api/categories");

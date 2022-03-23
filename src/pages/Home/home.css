@@ -10,20 +10,6 @@
   flex-wrap: wrap;
 }
 
-.banner {
-  white-space: pre-wrap;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  row-gap: 1.5rem;
-}
-
-.banner .btn {
-  font-size: 2rem;
-}
-
 /* Why Us */
 
 #why-us {

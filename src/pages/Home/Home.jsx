@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Carousel, CarouselItem } from "../../components/carousel/Carousel";
 import { FeatureCard } from "../../components/feature-card/FeatureCard";
 import { useDocumentTitle } from "../../hooks/DocumentTitle";
@@ -7,6 +7,7 @@ import { FaLeaf, FaFire, FaCheck, FaHandshake } from "react-icons/fa";
 
 export const Home = () => {
   useDocumentTitle("home");
+  let navigate = useNavigate();
   const ReasonCard = ({ title, description, icon }) => {
     return (
       <div className="reason-card">
@@ -20,32 +21,41 @@ export const Home = () => {
     <div>
       <Carousel>
         <CarouselItem>
-          <div className="banner">
+          <>
             <header className="carousel-heading">Newest Shinobi Clothes</header>
-            <Link to="/products">
-              <button className="btn tertiary">Shop Now</button>
-            </Link>
-          </div>
+            <button
+              className="btn tertiary"
+              onClick={() => navigate("/products")}
+            >
+              Shop Now
+            </button>
+          </>
         </CarouselItem>
         <CarouselItem>
-          <div className="banner">
+          <>
             <header className="carousel-heading">
               Hottest weapons upto 20% off
             </header>
-            <Link to="/products">
-              <button className="btn tertiary">Shop Now</button>
-            </Link>
-          </div>
+            <button
+              className="btn tertiary"
+              onClick={() => navigate("/products")}
+            >
+              Shop Now
+            </button>
+          </>
         </CarouselItem>
         <CarouselItem>
-          <div className="banner">
+          <>
             <header className="carousel-heading">
               Clearance Sale starts in 2 days!
             </header>
-            <Link to="/products">
-              <button className="btn tertiary">Shop Now</button>
-            </Link>
-          </div>
+            <button
+              className="btn tertiary"
+              onClick={() => navigate("/products")}
+            >
+              Shop Now
+            </button>
+          </>
         </CarouselItem>
       </Carousel>
       {/* Featured Categories */}

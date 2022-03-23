@@ -1,4 +1,6 @@
 .carousel {
+  height: 50vh;
+  width: 100%;
   position: relative;
   overflow: hidden;
 }
@@ -21,26 +23,40 @@
   justify-content: space-between;
 }
 
-.inner {
-  white-space: nowrap;
-  transition: transform 0.3s;
-}
-
 .carousel-item {
   display: inline-flex;
+  white-space: pre-wrap;
+  flex-direction: column;
+  row-gap: 1.5rem;
   align-items: center;
   justify-content: center;
-  height: 50vh;
+  height: 100%;
+  width: 100%;
   background: linear-gradient(
     to right bottom,
     var(--color-primary-light),
     var(--color-tertiary-dark)
   );
   color: var(--color-tertiary);
+  animation: fadeaway 1.5s;
+  -webkit-animation: fadeaway 1.5s;
+}
+
+.carousel-item .btn {
+  font-size: 2rem;
 }
 
 @media only screen and (max-width: 600px) {
   .indicators {
     display: none;
+  }
+}
+
+@keyframes fadeaway {
+  0% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 1;
   }
 }
