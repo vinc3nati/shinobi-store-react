@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../contexts/auth-context";
+import { useData } from "../../contexts/data-context";
 import { useDocumentTitle } from "../../hooks/DocumentTitle";
 
 export const Signup = () => {
   useDocumentTitle("signup");
   const { user, handleSignUp } = useAuth();
+  const { setLoader } = useData();
   let navigate = useNavigate();
   const initialVal = {
     name: "",
@@ -17,7 +19,13 @@ export const Signup = () => {
     setSignup({ ...signup, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async () => await handleSignUp(signup);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoader(true);
+    await handleSignUp(signup);
+    setSignup(initialVal);
+    setLoader(false);
+  };
 
   useEffect(() => {
     if (user.token) {
@@ -34,9 +42,10 @@ export const Signup = () => {
           <input
             name="name"
             id="username"
+            value={signup.name}
             onChange={handleChange}
             required
-            type="email"
+            type="text"
             placeholder="John Doe"
           />
         </div>
@@ -45,6 +54,7 @@ export const Signup = () => {
           <input
             name="email"
             id="email"
+            value={signup.email}
             onChange={handleChange}
             required
             type="email"
@@ -56,6 +66,7 @@ export const Signup = () => {
           <input
             name="password"
             id="password"
+            value={signup.password}
             onChange={handleChange}
             required
             type="password"

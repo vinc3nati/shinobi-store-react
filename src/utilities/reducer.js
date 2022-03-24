@@ -50,22 +50,26 @@ export const reducer = (state, action) => {
       return {
         ...state,
         cart: [...action.payload.cart],
-        products: state.products.map((item) => ({
-          ...item,
-          addedToCart: action.payload.cart.some((it) => it._id === item._id),
-        })),
+        products: state.products.map((item) => {
+          return {
+            ...item,
+            addedToCart: action.payload.cart.some((it) => it._id === item._id),
+          };
+        }),
       };
 
     case ACTIONS.SetWishlist:
       return {
         ...state,
         wishlist: [...action.payload.wishlist],
-        products: state.products.map((item) => ({
-          ...item,
-          addedToWishlist: action.payload.wishlist.some(
-            (it) => it._id === item._id
-          ),
-        })),
+        products: state.products.map((item) => {
+          return {
+            ...item,
+            addedToWishlist: action.payload.wishlist.some(
+              (it) => it._id === item._id
+            ),
+          };
+        }),
       };
     case ACTIONS.Clear:
       return {

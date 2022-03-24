@@ -7,7 +7,7 @@ import { useData } from "../../contexts/data-context";
 import { ACTIONS, FILTERS } from "../../utilities/constant";
 
 export const Navbar = () => {
-  const { user } = useAuth();
+  const { user, handleLogOut } = useAuth();
   const { state, dispatch } = useData();
   let navigate = useNavigate();
 
@@ -44,14 +44,24 @@ export const Navbar = () => {
         <div className="nav-links">
           <Link to="/wishlist" className="badge">
             <FaHeart className="badge-icon" />
-            {state.wishlist.length !== 0 && (
-              <span className="number secondary">{state.wishlist.length}</span>
+            {state.wishlist.length !== 0 && user.token && (
+              <span className="number secondary">
+                {state.products.reduce(
+                  (acc, curr) => (curr.addedToWishlist ? acc + 1 : acc),
+                  0
+                )}
+              </span>
             )}
           </Link>
           <Link to="/cart" className="badge">
             <FaShoppingBag className="badge-icon" />
-            {state.cart.length !== 0 && (
-              <span className="number secondary">{state.cart.length}</span>
+            {state.cart.length !== 0 && user.token && (
+              <span className="number secondary">
+                {state.products.reduce(
+                  (acc, curr) => (curr.addedToCart ? acc + 1 : acc),
+                  0
+                )}
+              </span>
             )}
           </Link>
         </div>
@@ -59,12 +69,10 @@ export const Navbar = () => {
       <div className="user">
         <button
           className="btn icon-btn"
-          onClick={() =>
-            user.token ? navigate("/logout") : navigate("/signup")
-          }
+          onClick={() => (user.token ? handleLogOut() : navigate("/signup"))}
         >
           <FaUserCircle />
-          {user.token ? user.user.name : "Register"}
+          {user.token ? user.user.name.split(" ")[0] : "Register"}
         </button>
       </div>
     </nav>

@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../contexts/auth-context";
+import { useData } from "../../contexts/data-context";
 import { useDocumentTitle } from "../../hooks/DocumentTitle";
 
 export const Login = () => {
   useDocumentTitle("login");
   const { user, handleLogin } = useAuth();
+  const { setLoader } = useData();
   let navigate = useNavigate();
   const initialVal = {
     email: "",
@@ -15,14 +17,20 @@ export const Login = () => {
 
   const testLogin = {
     email: "adarshbalika@gmail.com",
-    password: "adarshbalika",
+    password: "adarshBalika123",
   };
 
   const handleChange = (e) => {
     setLogin({ ...login, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async () => await handleLogin(login);
+  const handleSubmit = async () => {
+    e.preventDefault();
+    setLoader(true);
+    await handleLogin(login);
+    setLogin(initialVal);
+    setLoader(false);
+  };
 
   useEffect(() => {
     if (user.token) {
@@ -39,6 +47,7 @@ export const Login = () => {
           <input
             name="email"
             id="email"
+            value={login.email}
             onChange={handleChange}
             required
             type="email"
@@ -50,6 +59,7 @@ export const Login = () => {
           <input
             name="password"
             id="password"
+            value={login.password}
             onChange={handleChange}
             required
             type="password"

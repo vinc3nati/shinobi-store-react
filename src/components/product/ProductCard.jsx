@@ -22,13 +22,13 @@ export const ProductCard = ({ product }) => {
     addedToWishlist,
   } = product;
   const { user } = useAuth();
-  const { dispatch } = useData();
+  const { state, dispatch } = useData();
   let navigate = useNavigate();
   const [disabled, setDisabled] = useState(false);
 
   const cartHandler = async () => {
+    setDisabled(true);
     try {
-      setDisabled(true);
       if (!user.token) {
         navigate("/login");
         return;
@@ -37,8 +37,9 @@ export const ProductCard = ({ product }) => {
         navigate("/cart");
         return;
       }
+
       const response = await postCart({
-        item: { ...product, qty: 1 },
+        product,
         token: user.token,
       });
       if (response.data.cart) {
@@ -55,18 +56,18 @@ export const ProductCard = ({ product }) => {
   };
 
   const wishlistHandler = async () => {
+    setDisabled(true);
     try {
-      setDisabled(true);
       if (!user.token) {
         navigate("/login");
         return;
       }
       let response = null;
       if (addedToWishlist) {
-        response = await deleteWishlist({ itemId: _id, token: user.token });
+        response = await deleteWishlist({ productId: _id, token: user.token });
       } else {
         response = await postWishlist({
-          item: { ...product },
+          product,
           token: user.token,
         });
       }
@@ -106,7 +107,7 @@ export const ProductCard = ({ product }) => {
         <div className="card-subtitle">{category}</div>
         <div className="card-content">{rating}&#9733;</div>
         <div className="card-pricing">
-          <span className="current-price">Rs. {price}</span>
+          <span className="current-price">&#8377; {price}</span>
         </div>
         <div className="btn-group">
           <button
