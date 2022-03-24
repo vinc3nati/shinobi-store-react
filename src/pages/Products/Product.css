@@ -67,8 +67,9 @@
   font-size: 2.5rem;
 }
 
-.wishlist.selected {
+.selected {
   background-color: var(--color-tertiary-dark);
+  color: var(--color-secondary-dark);
 }
 
 .product-heading {

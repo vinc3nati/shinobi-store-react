@@ -1,0 +1,21 @@
+#wishlist {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  padding-top: 1rem;
+}
+
+.wishlist-container {
+  padding-top: 2rem;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.wishlist-container .card .btn-group,
+.wishlist-container .card .btn-group .btn {
+  width: 100%;
+}

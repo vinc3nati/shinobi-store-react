@@ -4,10 +4,19 @@ import { Carousel, CarouselItem } from "../../components/carousel/Carousel";
 import { FeatureCard } from "../../components/feature-card/FeatureCard";
 import { useDocumentTitle } from "../../hooks/DocumentTitle";
 import { FaLeaf, FaFire, FaCheck, FaHandshake } from "react-icons/fa";
+import { useData } from "../../contexts/data-context";
+import { ACTIONS, FILTERS } from "../../utilities/constant";
 
 export const Home = () => {
   useDocumentTitle("home");
   let navigate = useNavigate();
+  const {
+    state: {
+      filters: { categories },
+    },
+    dispatch,
+  } = useData();
+
   const ReasonCard = ({ title, description, icon }) => {
     return (
       <div className="reason-card">
@@ -66,21 +75,61 @@ export const Home = () => {
             img="https://res.cloudinary.com/randomwave45/image/upload/v1647440481/shuriken_s0yhea.png"
             altText="shuriken"
             caption="Shuriken"
+            onClick={() => {
+              dispatch({
+                type: ACTIONS.ChangeFilters,
+                payload: {
+                  type: FILTERS.Categories,
+                  value: { ...categories, Shuriken: !categories.Shuriken },
+                },
+              });
+              navigate("/products");
+            }}
           />
           <FeatureCard
             img="https://res.cloudinary.com/randomwave45/image/upload/v1647440480/headband_n2exdo.png"
             altText="headband"
             caption="Headband"
+            onClick={() => {
+              dispatch({
+                type: ACTIONS.ChangeFilters,
+                payload: {
+                  type: FILTERS.Categories,
+                  value: { ...categories, Headband: true },
+                },
+              });
+              navigate("/products");
+            }}
           />
           <FeatureCard
             img="https://res.cloudinary.com/randomwave45/image/upload/v1647440481/kimono_f0iyae.png"
             altText="kimono"
             caption="Kimono"
+            onClick={() => {
+              dispatch({
+                type: ACTIONS.ChangeFilters,
+                payload: {
+                  type: FILTERS.Categories,
+                  value: { ...categories, Kimono: true },
+                },
+              });
+              navigate("/products");
+            }}
           />
           <FeatureCard
             img="https://res.cloudinary.com/randomwave45/image/upload/v1647440480/clothes_nzeake.png"
             altText="clothes"
             caption="Clothes"
+            onClick={() => {
+              dispatch({
+                type: ACTIONS.ChangeFilters,
+                payload: {
+                  type: FILTERS.Categories,
+                  value: { ...categories, Clothes: true },
+                },
+              });
+              navigate("/products");
+            }}
           />
         </div>
       </section>

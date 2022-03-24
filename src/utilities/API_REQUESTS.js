@@ -24,23 +24,23 @@ export const getCart = async ({ token }) =>
     },
   });
 
-export const postCart = async ({ item, token }) =>
+export const postCart = async ({ product, token }) =>
   await axios.post(
     "/api/user/cart",
-    { item },
+    { product },
     { headers: { authorization: token } }
   );
 
-export const deleteCart = async ({ itemId, token }) =>
-  await axios.delete(`/api/user/cart/${itemId}`, {
+export const deleteCart = async ({ productId, token }) =>
+  await axios.delete(`/api/user/cart/${productId}`, {
     headers: {
       authorization: token,
     },
   });
 
-export const changeQuantityCart = async ({ itemId, token, type }) =>
+export const changeQuantityCart = async ({ productId, token, type }) =>
   await axios.post(
-    `/api/user/cart/${itemId}`,
+    `/api/user/cart/${productId}`,
     {
       action: { type },
     },
@@ -58,10 +58,10 @@ export const getWishlist = async ({ token }) =>
     },
   });
 
-export const postWishlist = async ({ item, token }) =>
+export const postWishlist = async ({ product, token }) =>
   await axios.post(
     "/api/user/wishlist",
-    { item },
+    { product },
     {
       headers: {
         authorization: token,
@@ -69,8 +69,8 @@ export const postWishlist = async ({ item, token }) =>
     }
   );
 
-export const deleteWishlist = async ({ itemId, token }) =>
-  await axios.delete(`/api/user/wishlist/${itemId}`, {
+export const deleteWishlist = async ({ productId, token }) =>
+  await axios.delete(`/api/user/wishlist/${productId}`, {
     headers: {
       authorization: token,
     },
