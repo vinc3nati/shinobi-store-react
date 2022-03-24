@@ -22,13 +22,15 @@ export const Wishlist = () => {
   return (
     <section id="wishlist">
       <div class="section-heading">Wishlist</div>
-      {wishlist.length !== 0 &&
-        wishlistedData.map((item) => (
-          <ProductCard product={item} id={item._id} />
-        ))}
-      {wishlist.length === 0 && (
-        <h3 className="text-center">Your Wishlist is Empty</h3>
-      )}
+      <div className="wishlist-container">
+        {wishlist.length !== 0 &&
+          wishlistedData.map((item) => (
+            <ProductCard product={item} id={item._id} />
+          ))}
+        {wishlist.length === 0 && (
+          <h3 className="text-center">Your Wishlist is Empty</h3>
+        )}
+      </div>
     </section>
   );
 };

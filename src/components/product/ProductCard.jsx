@@ -42,7 +42,6 @@ export const ProductCard = ({ product }) => {
         product,
         token: user.token,
       });
-      console.log(response.data);
       if (response.data.cart) {
         dispatch({
           type: ACTIONS.SetCart,
