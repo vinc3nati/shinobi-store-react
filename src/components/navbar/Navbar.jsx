@@ -25,7 +25,7 @@ export const Navbar = () => {
           </button>
           <div className="input-grp">
             <input
-              type="text"
+              type="search"
               value={state.filters.search}
               onChange={(e) =>
                 dispatch({
@@ -65,15 +65,15 @@ export const Navbar = () => {
             )}
           </Link>
         </div>
-      </div>
-      <div className="user">
-        <button
-          className="btn icon-btn"
-          onClick={() => (user.token ? handleLogOut() : navigate("/signup"))}
-        >
-          <FaUserCircle />
-          {user.token ? user.user.name.split(" ")[0] : "Register"}
-        </button>
+        <div className="user">
+          <button
+            className="btn icon-btn"
+            onClick={() => (user.token ? handleLogOut() : navigate("/signup"))}
+          >
+            <FaUserCircle />
+            {user.token ? user.user.name.split(" ")[0] : "Register"}
+          </button>
+        </div>
       </div>
     </nav>
   );
