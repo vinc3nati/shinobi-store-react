@@ -71,6 +71,27 @@
   font-size: 2.5rem;
 }
 
+.card-rating {
+  font-size: 1.35rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  width: fit-content;
+  padding: 0.5rem 0.85rem;
+  margin-left: 1rem;
+  border: 1px solid var(--color-primary);
+  border-radius: var(--border-radius-3);
+}
+
+.card-star {
+  color: var(--color-warning);
+}
+
+.current-price {
+  font-weight: 900;
+  font-size: 1.6rem;
+}
+
 .selected {
   background-color: var(--color-tertiary-dark);
   color: var(--color-secondary-dark);

@@ -101,7 +101,10 @@ export const ProductDetails = () => {
           <main className="product-display-details">
             <div className="primary-details">
               <header className="product-title">{title}</header>
-              <div className="product-rating">{rating}&#9733;</div>
+              <div className="product-rating">
+                {rating}
+                <span className="product-star">&#9733;</span>
+              </div>
               <div className="product-price text-bold">&#8377; {price} /-</div>
             </div>
             <div className="secondary-details">

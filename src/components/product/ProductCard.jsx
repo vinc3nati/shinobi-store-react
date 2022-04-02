@@ -105,7 +105,9 @@ export const ProductCard = ({ product }) => {
           />
         </div>
         <div className="card-subtitle">{category}</div>
-        <div className="card-content">{rating}&#9733;</div>
+        <div className="card-rating text-bold">
+          {rating} <span className="card-star">&#9733;</span>
+        </div>
         <div className="card-pricing">
           <span className="current-price">&#8377; {price}</span>
         </div>
