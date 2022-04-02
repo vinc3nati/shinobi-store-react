@@ -13,6 +13,7 @@ import { Login } from "./pages/Auth/Login";
 import { Signup } from "./pages/Auth/Signup";
 import { useLocation } from "react-router-dom";
 import { ProductDetails } from "./pages/ProductDetails/ProductDetails";
+import { ScrollTop } from "./components/scrolltop/ScrollTop";
 
 function App() {
   const { loader } = useData();
@@ -31,6 +32,7 @@ function App() {
         <Route exact path="/signup" element={<Signup />} />
         <Route exact path="/mock" element={<Mockman />} />
       </Routes>
+      <ScrollTop />
       {pathname !== "/login" && pathname !== "/signup" && <Footer />}
     </>
   );

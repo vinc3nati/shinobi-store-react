@@ -3,6 +3,7 @@
 @import url("./components/feature-card/featureCard.css");
 @import url("./components/footer/footer.css");
 @import url("./components/loader/loader.css");
+@import url("./components/scrolltop/scrollTop.css");
 @import url("./pages/Home/home.css");
 @import url("./pages/Auth/auth.css");
 @import url("./pages/Cart/cart.css");
