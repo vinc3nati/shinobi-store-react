@@ -14,6 +14,7 @@ import { Signup } from "./pages/Auth/Signup";
 import { useLocation } from "react-router-dom";
 import { ProductDetails } from "./pages/ProductDetails/ProductDetails";
 import { ScrollTop } from "./components/scrolltop/ScrollTop";
+import { ErrorPage } from "./components/ErrorPage/ErrorPage";
 
 function App() {
   const { loader } = useData();
@@ -23,14 +24,16 @@ function App() {
       {loader && <Loader />}
       {pathname !== "/login" && pathname !== "/signup" && <Navbar />}
       <Routes>
-        <Route exact path="/" element={<Home />} />
-        <Route exact path="/products" element={<Products />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/products" element={<Products />} />
         <Route path="/product/:productId" element={<ProductDetails />} />
-        <Route exact path="/cart" element={<Cart />} />
-        <Route exact path="/wishlist" element={<Wishlist />} />
-        <Route exact path="/login" element={<Login />} />
-        <Route exact path="/signup" element={<Signup />} />
-        <Route exact path="/mock" element={<Mockman />} />
+        <Route path="/cart" element={<Cart />} />
+        <Route path="/wishlist" element={<Wishlist />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/mock" element={<Mockman />} />
+        <Route path="*" element={<ErrorPage />} />
+        <Route path="/error" element={<ErrorPage />} />
       </Routes>
       <ScrollTop />
       {pathname !== "/login" && pathname !== "/signup" && <Footer />}
