@@ -27,10 +27,10 @@ export const Wishlist = () => {
           wishlistedData.map((item) => (
             <ProductCard product={item} id={item._id} />
           ))}
-        {wishlist.length === 0 && (
-          <h3 className="text-center">Your Wishlist is Empty</h3>
-        )}
       </div>
+      {wishlist.length === 0 && (
+        <h3 className="text-center">Your Wishlist is Empty</h3>
+      )}
     </section>
   );
 };

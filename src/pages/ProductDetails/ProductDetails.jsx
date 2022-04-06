@@ -1,13 +1,20 @@
 import React, { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useAuth } from "../../contexts/auth-context";
 import { useData } from "../../contexts/data-context";
 import { FaHeart } from "react-icons/fa";
+import {
+  deleteWishlist,
+  postCart,
+  postWishlist,
+} from "../../utilities/API_REQUESTS";
+import { ACTIONS } from "../../utilities/constant";
 
 export const ProductDetails = () => {
   const [disabled, setDisabled] = useState(false);
   const { productId } = useParams();
   const { user } = useAuth();
+  const navigate = useNavigate();
   const {
     state: { products, cart, wishlist },
     dispatch,
@@ -37,7 +44,7 @@ export const ProductDetails = () => {
         return;
       }
       const response = await postCart({
-        item: { ...product, qty: 1 },
+        product: { ...productToDisplay, qty: 1 },
         token: user.token,
       });
       if (response.data.cart) {
@@ -65,7 +72,7 @@ export const ProductDetails = () => {
         response = await deleteWishlist({ itemId: _id, token: user.token });
       } else {
         response = await postWishlist({
-          item: { ...product },
+          product: { ...productToDisplay },
           token: user.token,
         });
       }

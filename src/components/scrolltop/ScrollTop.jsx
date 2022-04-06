@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { IoIosArrowUp } from "react-icons/io";
 
 export const ScrollTop = () => {
-  const [showButton, setShowButton] = useState(true);
+  const [showButton, setShowButton] = useState(false);
 
   const toggleShow = () => {
     const scrolled = document.documentElement.scrollTop;

@@ -5,6 +5,7 @@ import { FaSearch, FaHeart, FaShoppingBag, FaUserCircle } from "react-icons/fa";
 import { useAuth } from "../../contexts/auth-context";
 import { useData } from "../../contexts/data-context";
 import { ACTIONS, FILTERS } from "../../utilities/constant";
+import { Account } from "../account/Account";
 
 export const Navbar = () => {
   const { user, handleLogOut } = useAuth();
@@ -65,15 +66,7 @@ export const Navbar = () => {
             )}
           </Link>
         </div>
-        <div className="user">
-          <button
-            className="btn icon-btn"
-            onClick={() => (user.token ? handleLogOut() : navigate("/signup"))}
-          >
-            <FaUserCircle />
-            {user.token ? user.user.name.split(" ")[0] : "Register"}
-          </button>
-        </div>
+        <Account />
       </div>
     </nav>
   );
