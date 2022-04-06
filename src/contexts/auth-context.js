@@ -9,7 +9,7 @@ const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem(key)) || {});
   let navigate = useNavigate();
 
-  const handleLogin = async ({ email, password }) => {
+  const handleLogin = async ({ email, password, from }) => {
     try {
       const {
         data: { foundUser, encodedToken },
@@ -20,14 +20,15 @@ const AuthProvider = ({ children }) => {
           JSON.stringify({ user: foundUser, token: encodedToken })
         );
         setUser(JSON.parse(localStorage.getItem(key)));
-        navigate("/products");
+        navigate(from);
       }
     } catch (err) {
       console.error(err);
     }
   };
 
-  const handleSignUp = async ({ name, email, password }) => {
+  const handleSignUp = async ({ name, email, password, from }) => {
+    console.log(from);
     try {
       const {
         data: { createdUser, encodedToken },
@@ -38,7 +39,7 @@ const AuthProvider = ({ children }) => {
           JSON.stringify({ user: createdUser, token: encodedToken })
         );
         setUser(JSON.parse(localStorage.getItem(key)));
-        navigate("/products");
+        navigate(from);
       }
     } catch (err) {
       console.error(err);
