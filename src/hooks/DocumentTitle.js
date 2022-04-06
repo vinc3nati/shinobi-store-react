@@ -3,6 +3,6 @@ import { capitalize } from "../utilities/capitalize";
 
 export const useDocumentTitle = (title) => {
   useEffect(() => {
-    document.title = `SHINOBI STORE | ${capitalize(title)}`;
+    document.title = `Shinobi Store | ${capitalize(title)}`;
   }, [title]);
 };

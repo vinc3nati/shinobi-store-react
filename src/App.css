@@ -13,6 +13,7 @@
 @import url("./pages/ProductDetails/productDetails.css");
 @import url("./pages/Wishlist/wishlist.css");
 @import url("./pages/Profile/profile.css");
+@import url("./pages/Checkout/checkout.css");
 
 body {
   overflow: auto;

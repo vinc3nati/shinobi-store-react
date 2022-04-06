@@ -19,6 +19,13 @@
   width: 100%;
 }
 
+.empty-wishlist {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 @media only screen and (max-width: 600px) {
   .wishlist-container {
     grid-template-columns: repeat(2, 1fr);
