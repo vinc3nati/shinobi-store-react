@@ -50,8 +50,6 @@ function App() {
             </PrivateRoute>
           }
         />
-        {/* <PrivateRoute path="/cart" element={<Cart />} />
-        <PrivateRoute path="/wishlist" element={<Wishlist />} /> */}
         <Route
           path="/profile"
           element={
