@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../../contexts/auth-context";
 import { useData } from "../../contexts/data-context";
 import { useDocumentTitle } from "../../hooks/DocumentTitle";
@@ -8,13 +8,15 @@ export const Signup = () => {
   useDocumentTitle("signup");
   const { user, handleSignUp } = useAuth();
   const { setLoader } = useData();
-  let navigate = useNavigate();
   const initialVal = {
     name: "",
     email: "",
     password: "",
   };
   const [signup, setSignup] = useState(initialVal);
+  const { state } = useLocation();
+  const navigateToPathState = { from: state?.from ? state.from : "/" };
+
   const handleChange = (e) => {
     setSignup({ ...signup, [e.target.name]: e.target.value });
   };
@@ -22,17 +24,10 @@ export const Signup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoader(true);
-    await handleSignUp(signup);
+    await handleSignUp({ ...signup, ...navigateToPathState });
     setSignup(initialVal);
     setLoader(false);
   };
-
-  useEffect(() => {
-    if (user.token) {
-      navigate("/");
-    }
-  }, [user.token]);
-
   return (
     <section id="auth">
       <header className="section-heading">Register</header>

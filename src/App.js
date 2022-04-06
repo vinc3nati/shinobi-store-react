@@ -15,6 +15,11 @@ import { useLocation } from "react-router-dom";
 import { ProductDetails } from "./pages/ProductDetails/ProductDetails";
 import { ScrollTop } from "./components/scrolltop/ScrollTop";
 import { ErrorPage } from "./components/ErrorPage/ErrorPage";
+import { PrivateRoute } from "./components/privateroute/PrivateRoute";
+import { ProfilePage } from "./pages/Profile/ProfilePage";
+import { ProfileCard } from "./pages/Profile/ProfileCard";
+import { Address } from "./pages/Profile/Address";
+import { Orders } from "./pages/Profile/Orders";
 
 function App() {
   const { loader } = useData();
@@ -25,12 +30,40 @@ function App() {
       {pathname !== "/login" && pathname !== "/signup" && <Navbar />}
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/products" element={<Products />} />
-        <Route path="/product/:productId" element={<ProductDetails />} />
-        <Route path="/cart" element={<Cart />} />
-        <Route path="/wishlist" element={<Wishlist />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/products" element={<Products />} />
+        <Route path="/product/:productId" element={<ProductDetails />} />
+        <Route
+          path="/cart"
+          element={
+            <PrivateRoute path="/cart">
+              <Cart />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/wishlist"
+          element={
+            <PrivateRoute path="/wishlist">
+              <Wishlist />
+            </PrivateRoute>
+          }
+        />
+        {/* <PrivateRoute path="/cart" element={<Cart />} />
+        <PrivateRoute path="/wishlist" element={<Wishlist />} /> */}
+        <Route
+          path="/profile"
+          element={
+            <PrivateRoute path="/profile">
+              <ProfilePage />
+            </PrivateRoute>
+          }
+        >
+          <Route path="" element={<ProfileCard title="profile" />} />
+          <Route path="address" element={<Address title="address" />} />
+          <Route path="orders" element={<Orders title="orders" />} />
+        </Route>
         <Route path="/mock" element={<Mockman />} />
         <Route path="*" element={<ErrorPage />} />
         <Route path="/error" element={<ErrorPage />} />

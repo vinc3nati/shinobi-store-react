@@ -14,12 +14,6 @@ export const Cart = () => {
   const { user } = useAuth();
   let navigate = useNavigate();
 
-  useEffect(() => {
-    if (!user.token) {
-      navigate("/login");
-    }
-  }, []);
-
   const total = cartTotal(cart);
   const delivery = deliveryFee(total);
 

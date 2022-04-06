@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { useAuth } from "../../contexts/auth-context";
 import { useData } from "../../contexts/data-context";
 import { useDocumentTitle } from "../../hooks/DocumentTitle";
@@ -8,13 +8,13 @@ export const Login = () => {
   useDocumentTitle("login");
   const { user, handleLogin } = useAuth();
   const { setLoader } = useData();
-  let navigate = useNavigate();
   const initialVal = {
     email: "",
     password: "",
   };
   const [login, setLogin] = useState(initialVal);
-
+  const { state } = useLocation();
+  const navigateToPathState = { from: state?.from ? state.from : "/" };
   const testLogin = {
     email: "adarshbalika@gmail.com",
     password: "adarshBalika123",
@@ -27,16 +27,10 @@ export const Login = () => {
   const handleSubmit = async () => {
     e.preventDefault();
     setLoader(true);
-    await handleLogin(login);
+    await handleLogin({ ...login, ...navigateToPathState });
     setLogin(initialVal);
     setLoader(false);
   };
-
-  useEffect(() => {
-    if (user.token) {
-      navigate("/");
-    }
-  }, [user.token]);
 
   return (
     <section id="auth">
@@ -80,13 +74,17 @@ export const Login = () => {
       <span
         className="text-underline text-primary text-center"
         style={{ cursor: "pointer" }}
-        onClick={() => handleLogin(testLogin)}
+        onClick={() => handleLogin({ ...testLogin, ...navigateToPathState })}
       >
         Guest Login
       </span>
       <div className="sub-text text-center">
         Don't have an account?{" "}
-        <Link to="/signup" className="text-secondary">
+        <Link
+          to="/signup"
+          state={navigateToPathState}
+          className="text-secondary"
+        >
           Sign up!
         </Link>
       </div>
