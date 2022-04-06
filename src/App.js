@@ -20,6 +20,7 @@ import { ProfilePage } from "./pages/Profile/ProfilePage";
 import { ProfileCard } from "./pages/Profile/ProfileCard";
 import { Address } from "./pages/Profile/Address";
 import { Orders } from "./pages/Profile/Orders";
+import { Checkout } from "./pages/Checkout/Checkout";
 
 function App() {
   const { loader } = useData();
@@ -30,30 +31,38 @@ function App() {
       {pathname !== "/login" && pathname !== "/signup" && <Navbar />}
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/products" element={<Products />} />
+        <Route path="/login" element={<Login title="login" />} />
+        <Route path="/signup" element={<Signup title="register" />} />
+        <Route path="/products" element={<Products title="products" />} />
         <Route path="/product/:productId" element={<ProductDetails />} />
         <Route
           path="/cart"
           element={
-            <PrivateRoute path="/cart">
-              <Cart />
+            <PrivateRoute>
+              <Cart title="cart" />
             </PrivateRoute>
           }
         />
         <Route
           path="/wishlist"
           element={
-            <PrivateRoute path="/wishlist">
-              <Wishlist />
+            <PrivateRoute>
+              <Wishlist title="wishlist" />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/checkout"
+          element={
+            <PrivateRoute>
+              <Checkout title="checkout" />
             </PrivateRoute>
           }
         />
         <Route
           path="/profile"
           element={
-            <PrivateRoute path="/profile">
+            <PrivateRoute>
               <ProfilePage />
             </PrivateRoute>
           }

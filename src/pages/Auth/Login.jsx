@@ -4,8 +4,8 @@ import { useAuth } from "../../contexts/auth-context";
 import { useData } from "../../contexts/data-context";
 import { useDocumentTitle } from "../../hooks/DocumentTitle";
 
-export const Login = () => {
-  useDocumentTitle("login");
+export const Login = ({ title }) => {
+  useDocumentTitle(title);
   const { user, handleLogin } = useAuth();
   const { setLoader } = useData();
   const initialVal = {
@@ -13,8 +13,8 @@ export const Login = () => {
     password: "",
   };
   const [login, setLogin] = useState(initialVal);
-  const { state } = useLocation();
-  const navigateToPathState = { from: state?.from ? state.from : "/" };
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
   const testLogin = {
     email: "adarshbalika@gmail.com",
     password: "adarshBalika123",
@@ -27,11 +27,10 @@ export const Login = () => {
   const handleSubmit = async () => {
     e.preventDefault();
     setLoader(true);
-    await handleLogin({ ...login, ...navigateToPathState });
+    await handleLogin({ ...login, from });
     setLogin(initialVal);
     setLoader(false);
   };
-
   return (
     <section id="auth">
       <header className="section-heading">Login</header>
@@ -74,17 +73,13 @@ export const Login = () => {
       <span
         className="text-underline text-primary text-center"
         style={{ cursor: "pointer" }}
-        onClick={() => handleLogin({ ...testLogin, ...navigateToPathState })}
+        onClick={() => handleLogin({ ...testLogin, from })}
       >
         Guest Login
       </span>
       <div className="sub-text text-center">
         Don't have an account?{" "}
-        <Link
-          to="/signup"
-          state={navigateToPathState}
-          className="text-secondary"
-        >
+        <Link to="/signup" state={{ from }} className="text-secondary">
           Sign up!
         </Link>
       </div>

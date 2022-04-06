@@ -20,7 +20,7 @@ const AuthProvider = ({ children }) => {
           JSON.stringify({ user: foundUser, token: encodedToken })
         );
         setUser(JSON.parse(localStorage.getItem(key)));
-        navigate(from);
+        navigate(from, { replace: true });
       }
     } catch (err) {
       console.error(err);
@@ -39,7 +39,7 @@ const AuthProvider = ({ children }) => {
           JSON.stringify({ user: createdUser, token: encodedToken })
         );
         setUser(JSON.parse(localStorage.getItem(key)));
-        navigate(from);
+        navigate(from, { replace: true });
       }
     } catch (err) {
       console.error(err);

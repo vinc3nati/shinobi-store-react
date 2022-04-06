@@ -4,8 +4,8 @@ import { useAuth } from "../../contexts/auth-context";
 import { useData } from "../../contexts/data-context";
 import { useDocumentTitle } from "../../hooks/DocumentTitle";
 
-export const Signup = () => {
-  useDocumentTitle("signup");
+export const Signup = ({ title }) => {
+  useDocumentTitle(title);
   const { user, handleSignUp } = useAuth();
   const { setLoader } = useData();
   const initialVal = {
@@ -14,8 +14,8 @@ export const Signup = () => {
     password: "",
   };
   const [signup, setSignup] = useState(initialVal);
-  const { state } = useLocation();
-  const navigateToPathState = { from: state?.from ? state.from : "/" };
+  const location = useLocation();
+  const from = location.state?.from || "/";
 
   const handleChange = (e) => {
     setSignup({ ...signup, [e.target.name]: e.target.value });
@@ -24,7 +24,7 @@ export const Signup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoader(true);
-    await handleSignUp({ ...signup, ...navigateToPathState });
+    await handleSignUp({ ...signup, from });
     setSignup(initialVal);
     setLoader(false);
   };
