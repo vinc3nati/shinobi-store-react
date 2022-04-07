@@ -1,6 +1,6 @@
 <h1 align="center">
   <br />
-  <a href="https://shinobi-stores.netlify.app/"><img src="https://github.com/vinc3nati/shinobi-store-react/tree/dev/src/assets/store_logo.png" alt="logo" width="200"></a>
+  <a href="https://shinobi-stores.netlify.app/"><img src="https://github.com/vinc3nati/shinobi-store-react/blob/dev/src/assets/store_logo.png" alt="logo" width="200"></a>
   <br />
   <br />
 </h1>
@@ -49,7 +49,7 @@
 
 ## Demo
 
-![demo](https://github.com/vinc3nati/shinobi-store-react/blob/dev/assets/demo.gif)
+![store-demo](https://user-images.githubusercontent.com/48097586/162236782-06a33f92-a21e-48fa-a0e8-ea7fea900885.gif)
 
 <!-- Features -->
 
