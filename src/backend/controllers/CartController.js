@@ -99,6 +99,36 @@ export const removeItemFromCartHandler = function (schema, request) {
 };
 
 /**
+ * This handler handles removing all items to user's cart.
+ * */
+
+export const removeAllItemFromCartHandler = function (schema, request) {
+  const userId = requiresAuth.call(this, request);
+  try {
+    if (!userId) {
+      new Response(
+        404,
+        {},
+        {
+          errors: ["The email you entered is not Registered. Not Found error"],
+        }
+      );
+    }
+    let userCart = schema.users.findBy({ _id: userId }).cart;
+    this.db.users.update({ _id: userId }, { cart: [] });
+    return new Response(200, {}, { cart: userCart });
+  } catch (error) {
+    return new Response(
+      500,
+      {},
+      {
+        error,
+      }
+    );
+  }
+};
+
+/**
  * This handler handles adding items to user's cart.
  * send POST Request at /api/user/cart/:productId
  * body contains {action} (whose 'type' can be increment or decrement)

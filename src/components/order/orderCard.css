@@ -1,0 +1,24 @@
+.order-card {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--color-tertiary-dark);
+}
+
+.order-heading {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--color-success);
+}
+
+.order-card .card-image-container {
+    height: 15rem;
+    width: 15rem;
+}
+
+.order-card .card.horizontal {
+    cursor: pointer;
+}

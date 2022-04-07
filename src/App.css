@@ -6,6 +6,7 @@
 @import url("./components/scrolltop/scrollTop.css");
 @import url("./components/ErrorPage/errorPage.css");
 @import url("./components/account/account.css");
+@import url("./components/order/orderCard.css");
 @import url("./pages/Home/home.css");
 @import url("./pages/Auth/auth.css");
 @import url("./pages/Cart/cart.css");

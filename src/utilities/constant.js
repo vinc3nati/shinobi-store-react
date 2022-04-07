@@ -4,6 +4,7 @@ export const ACTIONS = {
   GetProducts: "GET_PRODUCTS",
   GetCategories: "GET_CATEGORIES",
   SetCart: "SET_CART",
+  SetOrder: "SET_ORDER",
   SetWishlist: "SET_WISHLIST",
 };
 

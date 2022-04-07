@@ -4,6 +4,7 @@ export const defaultValue = {
   products: [],
   wishlist: [],
   cart: [],
+  orders: [],
   filters: {
     sortBy: "",
     categories: {},
@@ -71,6 +72,14 @@ export const reducer = (state, action) => {
           };
         }),
       };
+
+    case ACTIONS.SetOrder:
+      return {
+        ...state,
+        cart: [],
+        orders: state.orders.concat(action.payload.orders),
+      };
+
     case ACTIONS.Clear:
       return {
         ...state,

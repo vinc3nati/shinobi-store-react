@@ -1,6 +1,6 @@
 #cart {
   padding: 1rem 1.8rem;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .cart-wrapper {

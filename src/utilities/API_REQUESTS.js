@@ -38,6 +38,13 @@ export const deleteCart = async ({ productId, token }) =>
     },
   });
 
+export const deleteCartAll = async ({ token }) =>
+  await axios.delete("/api/user/cart/all", {
+    headers: {
+      authorization: token,
+    },
+  });
+
 export const changeQuantityCart = async ({ productId, token, type }) =>
   await axios.post(
     `/api/user/cart/${productId}`,

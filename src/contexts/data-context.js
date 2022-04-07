@@ -10,10 +10,12 @@ import {
   getCategories,
   getCart,
   getWishlist,
+  deleteCartAll,
 } from "../utilities/API_REQUESTS";
 import { reducer, defaultValue } from "../utilities/reducer";
 import { ACTIONS } from "../utilities/constant";
 import { useAuth } from "./auth-context";
+import { useNavigate } from "react-router-dom";
 
 const DataContext = createContext({});
 
@@ -21,6 +23,7 @@ const DataProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, defaultValue);
   const [loader, setLoader] = useState(false);
   const { user } = useAuth();
+  const navigate = useNavigate();
   useEffect(() => {
     (async () => {
       try {
@@ -66,8 +69,27 @@ const DataProvider = ({ children }) => {
     })();
   }, [user.token]);
 
+  const handleOrders = async (tempObj) => {
+    dispatch({
+      type: ACTIONS.SetOrder,
+      payload: { orders: tempObj },
+    });
+    try {
+      await deleteCartAll({ token: user.token });
+      dispatch({
+        type: ACTIONS.SetCart,
+        payload: { cart: [] },
+      });
+      navigate("/profile/orders", { replace: true });
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   return (
-    <DataContext.Provider value={{ state, dispatch, loader, setLoader }}>
+    <DataContext.Provider
+      value={{ state, dispatch, loader, setLoader, handleOrders }}
+    >
       {children}
     </DataContext.Provider>
   );
