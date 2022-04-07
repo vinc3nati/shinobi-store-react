@@ -18,7 +18,7 @@ export const Cart = ({ title }) => {
 
   return (
     <section id="cart">
-      <div class="section-heading">Cart</div>
+      <div className="section-heading">Cart</div>
       {cart.length !== 0 && (
         <div className="cart-wrapper">
           <main className="cart-container">

@@ -53,7 +53,7 @@ export const Filters = () => {
                   })
                 }
               />
-              <label for={price + "-radio"}>
+              <label htmlFor={price + "-radio"}>
                 <span className="radio-btn"></span>
                 <span>Price {price}</span>
               </label>
@@ -101,7 +101,7 @@ export const Filters = () => {
                   })
                 }
               />
-              <label for={category + "-checkbox"}>{category}</label>
+              <label htmlFor={category + "-checkbox"}>{category}</label>
             </div>
           ))}
         </div>
@@ -122,7 +122,7 @@ export const Filters = () => {
                   })
                 }
               />
-              <label for={rate + "star"}>
+              <label htmlFor={rate + "star"}>
                 <span className="radio-btn"></span>
                 <span>{rate + "stars & above"}</span>
               </label>

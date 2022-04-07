@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
-import { useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaUserCircle } from "react-icons/fa";
 import { useAuth } from "../../contexts/auth-context";
 import { useOnClickOutside } from "../../hooks/OnClickOutside";
@@ -15,16 +15,19 @@ export const Account = () => {
   } = useAuth();
   const toggleDropdown = () => setOpen((prev) => !prev);
   const navigate = useNavigate();
-
+  const location = useLocation();
+  const from = location.pathname;
   useOnClickOutside(dropdownRef, () => setOpen(false));
 
   return (
     <div ref={dropdownRef} className="user">
       {!token && (
-        <button className="btn icon-btn" onClick={() => navigate("/signup")}>
-          <FaUserCircle />
-          register
-        </button>
+        <Link to="/signup" state={{ from }}>
+          <button className="btn icon-btn">
+            <FaUserCircle />
+            register
+          </button>
+        </Link>
       )}
       {token && (
         <>

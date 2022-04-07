@@ -124,6 +124,7 @@
 }
 
 #product .btn-group,
+#product .btn-group > *,
 #product .btn {
   width: 100%;
 }

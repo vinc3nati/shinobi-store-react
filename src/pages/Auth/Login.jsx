@@ -14,7 +14,8 @@ export const Login = ({ title }) => {
   };
   const [login, setLogin] = useState(initialVal);
   const location = useLocation();
-  const from = location.state?.from?.pathname || "/";
+  const from = location.state?.from || "/";
+
   const testLogin = {
     email: "adarshbalika@gmail.com",
     password: "adarshBalika123",
@@ -31,6 +32,7 @@ export const Login = ({ title }) => {
     setLogin(initialVal);
     setLoader(false);
   };
+
   return (
     <section id="auth">
       <header className="section-heading">Login</header>

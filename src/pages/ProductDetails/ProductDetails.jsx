@@ -1,5 +1,11 @@
 import React, { useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import {
+  Link,
+  NavLink,
+  useLocation,
+  useNavigate,
+  useParams,
+} from "react-router-dom";
 import { useAuth } from "../../contexts/auth-context";
 import { useData } from "../../contexts/data-context";
 import { FaHeart } from "react-icons/fa";
@@ -32,11 +38,14 @@ export const ProductDetails = () => {
     addedToWishlist,
   } = productToDisplay;
 
+  const location = useLocation();
+  const from = location.pathname;
+
   const cartHandler = async () => {
+    setDisabled(true);
     try {
-      setDisabled(true);
       if (!user.token) {
-        navigate("/login");
+        navigate("/login", { state: { from }, replace: true });
         return;
       }
       if (addedToCart) {
@@ -61,10 +70,10 @@ export const ProductDetails = () => {
   };
 
   const wishlistHandler = async () => {
+    setDisabled(true);
     try {
-      setDisabled(true);
       if (!user.token) {
-        navigate("/login");
+        navigate("/login", { state: { from }, replace: true });
         return;
       }
       let response = null;

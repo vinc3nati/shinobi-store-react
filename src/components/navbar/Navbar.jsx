@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React from "react";
+import { Link } from "react-router-dom";
 import logo from "../../assets/store_logo_white.png";
 import { FaSearch, FaHeart, FaShoppingBag, FaUserCircle } from "react-icons/fa";
 import { useAuth } from "../../contexts/auth-context";
@@ -8,9 +8,8 @@ import { ACTIONS, FILTERS } from "../../utilities/constant";
 import { Account } from "../account/Account";
 
 export const Navbar = () => {
-  const { user, handleLogOut } = useAuth();
+  const { user } = useAuth();
   const { state, dispatch } = useData();
-  let navigate = useNavigate();
 
   return (
     <nav className="navbar">

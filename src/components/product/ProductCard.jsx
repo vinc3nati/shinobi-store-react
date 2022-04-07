@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { FaHeart } from "react-icons/fa";
 import { useAuth } from "../../contexts/auth-context";
 import {
@@ -25,19 +25,20 @@ export const ProductCard = ({ product }) => {
   const { state, dispatch } = useData();
   let navigate = useNavigate();
   const [disabled, setDisabled] = useState(false);
+  const location = useLocation();
+  const from = location.pathname;
 
   const cartHandler = async () => {
     setDisabled(true);
     try {
       if (!user.token) {
-        navigate("/login");
+        navigate("/login", { state: { from }, replace: true });
         return;
       }
       if (addedToCart) {
         navigate("/cart");
         return;
       }
-
       const response = await postCart({
         product,
         token: user.token,
@@ -59,7 +60,7 @@ export const ProductCard = ({ product }) => {
     setDisabled(true);
     try {
       if (!user.token) {
-        navigate("/login");
+        navigate("/login", { state: { from }, replace: true });
         return;
       }
       let response = null;

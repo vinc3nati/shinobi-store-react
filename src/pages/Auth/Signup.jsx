@@ -28,6 +28,7 @@ export const Signup = ({ title }) => {
     setSignup(initialVal);
     setLoader(false);
   };
+
   return (
     <section id="auth">
       <header className="section-heading">Register</header>
@@ -72,7 +73,7 @@ export const Signup = ({ title }) => {
       </form>
       <div className="sub-text text-center">
         Already have an account?{" "}
-        <Link to="/login" className="text-secondary">
+        <Link to="/login" state={{ from }} className="text-secondary">
           Log in!
         </Link>
       </div>
