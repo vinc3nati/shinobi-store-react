@@ -25,7 +25,7 @@ export const Orders = ({ title }) => {
         </div>
       ) : (
         <div className="order-container">
-          {orders.map((order) => (
+          {orders.reverse().map((order) => (
             <OrderCard key={order.paymentId} {...order} />
           ))}
         </div>
