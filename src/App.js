@@ -21,6 +21,7 @@ import { ProfileCard } from "./pages/Profile/ProfileCard";
 import { Address } from "./pages/Profile/Address";
 import { Orders } from "./pages/Profile/Orders";
 import { Checkout } from "./pages/Checkout/Checkout";
+import { Search } from "./pages/Search/Search";
 
 function App() {
   const { loader } = useData();
@@ -35,6 +36,7 @@ function App() {
         <Route path="/signup" element={<Signup title="register" />} />
         <Route path="/products" element={<Products title="products" />} />
         <Route path="/product/:productId" element={<ProductDetails />} />
+        <Route path="/search" element={<Search />} />
         <Route
           path="/cart"
           element={
