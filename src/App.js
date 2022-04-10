@@ -1,3 +1,4 @@
+import React, { useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import { Footer } from "./components/footer/Footer";
@@ -26,6 +27,13 @@ import { Search } from "./pages/Search/Search";
 function App() {
   const { loader } = useData();
   let { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+    });
+  }, []);
+
   return (
     <>
       {loader && <Loader />}

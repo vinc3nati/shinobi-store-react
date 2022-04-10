@@ -80,7 +80,7 @@ const DataProvider = ({ children }) => {
         type: ACTIONS.SetCart,
         payload: { cart: [] },
       });
-      navigate("/profile/orders", { replace: true });
+      navigate("/profile/orders");
     } catch (err) {
       console.error(err);
     }
