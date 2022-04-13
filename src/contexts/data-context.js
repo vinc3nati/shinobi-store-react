@@ -11,6 +11,7 @@ import {
   getCart,
   getWishlist,
   deleteCartAll,
+  getAddress,
 } from "../utilities/API_REQUESTS";
 import { reducer, defaultValue } from "../utilities/reducer";
 import { ACTIONS } from "../utilities/constant";
@@ -58,6 +59,14 @@ const DataProvider = ({ children }) => {
             dispatch({
               type: ACTIONS.SetWishlist,
               payload: { wishlist: wishlistResponse.data.wishlist },
+            });
+          }
+
+          const addressResponse = await getAddress({ token: user.token });
+          if (addressResponse.data.address) {
+            dispatch({
+              type: ACTIONS.SetAddress,
+              payload: { address: addressResponse.data.address },
             });
           }
 

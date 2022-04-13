@@ -1,11 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { Navigate } from "react-router-dom";
 import { CheckoutSummary } from "../../components/checkout/CheckoutSummary";
 import { useData } from "../../contexts/data-context";
 
 export const Checkout = () => {
+  const [selectedAddress, setSelectedAddress] = useState({});
   const {
-    state: { cart },
+    state: { cart, address },
   } = useData();
 
   return (
@@ -14,20 +15,39 @@ export const Checkout = () => {
         <Navigate to="/cart" replace />
       ) : (
         <section id="checkout">
-          <div class="section-heading">Checkout</div>
+          <div className="section-heading">Checkout</div>
           <div className="checkout-container">
-            <div className="checkout-address">
-              <div className="address-content">
-                <p className="address-heading">
-                  Deliver to: <span className="text-bold">Random Name</span>
-                </p>
-                <p>Sunsan gali, chapri Naka, Kholi 420</p>
-                <p>Mumbai,India</p>
-                <p>Contact: +91 8238312392</p>
-              </div>
-              <button className="btn outline-primary">change</button>
+            <div
+              className="checkout-address"
+              style={{ visibility: !address.length ? "hidden" : "visible" }}
+            >
+              <h6>Deliver To: </h6>
+              {address.map((item) => (
+                <div className="radio-grp" key={item._id}>
+                  <input
+                    type="radio"
+                    name="adress-input"
+                    id={item.name + "address"}
+                    value={item}
+                    onChange={() => setSelectedAddress(item)}
+                  />
+                  <label htmlFor={item.name + "address"}>
+                    <span className="radio-btn"></span>
+                    <div className="address-content">
+                      <p className="address-heading">
+                        <span className="text-bold">{item.name}</span>
+                      </p>
+                      <p>{item.street}</p>
+                      <p>
+                        {item.city},{item.state} {item.zipCode}, {item.country}
+                      </p>
+                      <p>Contact: {item.mobile}</p>
+                    </div>
+                  </label>
+                </div>
+              ))}
             </div>
-            <CheckoutSummary />
+            <CheckoutSummary selectedAddress={selectedAddress} />
           </div>
         </section>
       )}

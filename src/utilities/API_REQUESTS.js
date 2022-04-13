@@ -82,3 +82,39 @@ export const deleteWishlist = async ({ productId, token }) =>
       authorization: token,
     },
   });
+
+export const getAddress = async ({ token }) =>
+  await axios.get("/api/user/address", {
+    headers: {
+      authorization: token,
+    },
+  });
+
+export const postAddress = async ({ address, token }) =>
+  await axios.post(
+    "/api/user/address",
+    { address },
+    {
+      headers: {
+        authorization: token,
+      },
+    }
+  );
+
+export const updateAddress = async ({ addressId, token, address }) =>
+  await axios.post(
+    `/api/user/address/${addressId}`,
+    { address },
+    {
+      headers: {
+        authorization: token,
+      },
+    }
+  );
+
+export const deleteAddress = async ({ addressId, token }) =>
+  await axios.delete(`/api/user/address/${addressId}`, {
+    headers: {
+      authorization: token,
+    },
+  });

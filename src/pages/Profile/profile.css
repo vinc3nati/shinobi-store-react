@@ -74,3 +74,128 @@
 .profile-title {
     color: var(--color-primary);
 }
+
+/* Address */
+
+.address-container {
+    margin: 0 auto;
+    display: flex;
+    width: 100%;
+    max-width: 500px;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1.5rem 2rem;
+    background-color: #fff;
+    /* border: 2px solid var(--color-primary); */
+    box-shadow: 0 0 0 1px var(--color-primary);
+    border-radius: var(--border-radius-3);
+  }
+  
+  .address-container > * {
+    margin: 0.5rem;
+  }
+  
+  .address-container:not(:last-child) {
+    margin-bottom: 1.5rem;
+  }
+  
+  .address-type {
+    padding: 0.8rem 1.25rem;
+    font-size: 1rem;
+    width: fit-content;
+    background-color: var(--color-tertiary);
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--color-primary);
+    border-radius: var(--border-radius-3);
+  }
+  
+  .adress-heading {
+    font-size: 2rem;
+  }
+  
+  .note,
+  .adress-heading {
+    color: var(--color-grey-dark-3);
+    font-weight: 700;
+  }
+  
+  .btn-grp {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  /* Form Inputs */
+  .modal-container input,
+  .modal-container .input-grp,
+  .dropdown {
+    width: 100%;
+  }
+  .modal-content {
+    height: 75vh;
+  }
+  .input-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .dropdown {
+    padding: 1rem 1.5rem;
+    border-radius: var(--border-radius-3);
+    font-size: 1.6rem;
+    cursor: pointer;
+  }
+  
+  .dropdown:focus {
+    box-shadow: 0 0 0 1px var(--color-primary);
+    outline: none;
+  }
+  
+  .radio-buttons {
+    display: flex;
+    column-gap: 1.5rem;
+  }
+
+  .address-btn {
+      outline: none;
+      border: none;
+      width: 100%;
+      margin: 1rem auto;
+      padding: 1rem 1.5rem;
+      color: var(--color-grey-dark-3);
+      cursor: pointer;
+      background-color: transparent;
+      font-size: 2rem;
+      text-transform: uppercase;
+      border-radius: var(--border-radius-3);
+      transition: background-color 0.3s;
+      -webkit-transition: background-color 0.3s;
+      -moz-transition: background-color 0.3s;
+      -ms-transition: background-color 0.3s;
+      -o-transition: background-color 0.3s;
+}
+
+.address-btn:hover {
+    background-color: var(--color-tertiary-dark);
+}
+
+  .address-btn > *:first-child {
+      margin-right: 2rem;
+  }
+
+  .address-card {
+    padding-bottom: 1rem;
+    font-size: 1.7rem;
+    border-bottom: 1px solid var(--color-tertiary-dark);
+  }
+
+  .address-card .btn-grp {
+    margin-top: 1rem;
+  }
+
+  .checkout-address {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }

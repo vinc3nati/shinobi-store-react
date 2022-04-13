@@ -1,8 +1,9 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-export const OrderCard = ({ products, amount, paymentId, style }) => {
+export const OrderCard = ({ products, amount, paymentId, address }) => {
   const navigate = useNavigate();
+  const { name, street, city, state, country, zipCode } = address;
   return (
     <div className="order-card">
       <div className="order-heading">Order Confirmed</div>
@@ -11,8 +12,10 @@ export const OrderCard = ({ products, amount, paymentId, style }) => {
         Total : <span className="text-bold">&#8377;{amount}</span>
       </p>
       <div className="order-address">
-        Deliver to: Random name
-        <p>Sunsan gali, Chapri Naka, Kholi 420, Mumbai, India</p>
+        Deliver to: {name}
+        <p>
+          {street}, {city}, {state} {zipCode} {country}{" "}
+        </p>
       </div>
       {products.map(({ _id, image, title, category, qty }) => (
         <div

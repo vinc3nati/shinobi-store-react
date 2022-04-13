@@ -5,6 +5,7 @@ export const defaultValue = {
   wishlist: [],
   cart: [],
   orders: [],
+  address: [],
   filters: {
     sortBy: "",
     categories: {},
@@ -78,6 +79,15 @@ export const reducer = (state, action) => {
         ...state,
         cart: [],
         orders: state.orders.concat(action.payload.orders),
+      };
+
+    case ACTIONS.SetAddress:
+      return {
+        ...state,
+        address: action.payload.address.map((item) => ({
+          ...item,
+          isPrimary: false,
+        })),
       };
 
     case ACTIONS.Clear:
