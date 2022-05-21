@@ -1,16 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import logo from "../../assets/store_logo_white.png";
-import { FaSearch, FaHeart, FaShoppingBag, FaUserCircle } from "react-icons/fa";
+import { FaHeart, FaShoppingBag } from "react-icons/fa";
 import { useAuth } from "../../contexts/auth-context";
 import { useData } from "../../contexts/data-context";
-import { ACTIONS, FILTERS } from "../../utilities/constant";
 import { Account } from "../account/Account";
 import { SearchBar } from "./searchbar";
 
 export const Navbar = () => {
   const { user } = useAuth();
-  const { state, dispatch } = useData();
+  const { state } = useData();
 
   return (
     <nav className="navbar">
@@ -20,27 +19,6 @@ export const Navbar = () => {
             <img src={logo} alt="logo" className="img img-responsive" />
           </Link>
         </div>
-        {/* <div className="search-bar">
-          <button type="submit" className="btn tertiary">
-            <FaSearch />
-          </button>
-          <div className="input-grp">
-            <input
-              type="search"
-              value={state.filters.search}
-              onChange={(e) =>
-                dispatch({
-                  type: ACTIONS.ChangeFilters,
-                  payload: {
-                    type: FILTERS.Search,
-                    value: e.target.value,
-                  },
-                })
-              }
-              placeholder="search"
-            />
-          </div>
-        </div> */}
         <SearchBar />
         <div className="nav-links">
           <Link to="/wishlist" className="badge">
