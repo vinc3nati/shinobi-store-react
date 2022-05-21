@@ -6,6 +6,7 @@ import { useAuth } from "../../contexts/auth-context";
 import { useData } from "../../contexts/data-context";
 import { ACTIONS, FILTERS } from "../../utilities/constant";
 import { Account } from "../account/Account";
+import { SearchBar } from "./searchbar";
 
 export const Navbar = () => {
   const { user } = useAuth();
@@ -19,7 +20,7 @@ export const Navbar = () => {
             <img src={logo} alt="logo" className="img img-responsive" />
           </Link>
         </div>
-        <div className="search-bar">
+        {/* <div className="search-bar">
           <button type="submit" className="btn tertiary">
             <FaSearch />
           </button>
@@ -39,8 +40,8 @@ export const Navbar = () => {
               placeholder="search"
             />
           </div>
-        </div>
-
+        </div> */}
+        <SearchBar />
         <div className="nav-links">
           <Link to="/wishlist" className="badge">
             <FaHeart className="badge-icon" />

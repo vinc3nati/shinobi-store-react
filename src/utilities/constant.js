@@ -6,6 +6,7 @@ export const ACTIONS = {
   SetCart: "SET_CART",
   SetOrder: "SET_ORDER",
   SetWishlist: "SET_WISHLIST",
+  SetAddress: "SET_ADDRESS",
 };
 
 export const FILTERS = {

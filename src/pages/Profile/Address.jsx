@@ -1,14 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
+import { FaPlus } from "react-icons/fa";
+import { AddressCard } from "../../components/address/AddressCard";
+import { AddressForm } from "../../components/address/AddressForm";
+import { useData } from "../../contexts/data-context";
 import { useDocumentTitle } from "../../hooks/DocumentTitle";
 
 export const Address = ({ title }) => {
   useDocumentTitle(title);
+  const [newAddress, setNewAddress] = useState(false);
+  const {
+    state: { address },
+  } = useData();
   return (
-    <div className="address-card">
-      <h6 className="text-bold">Random Name</h6>
-      <p>Sunsan gali, chapri Naka, Kholi 420</p>
-      <p>Mumbai,India</p>
-      <p>Contact: +91 8238312392</p>
-    </div>
+    <>
+      {!address.length && <h4 className="text-center">Create new address</h4>}
+      {address.map((item) => (
+        <AddressCard key={item._id} address={item} />
+      ))}
+      <button className="address-btn" onClick={() => setNewAddress(true)}>
+        <FaPlus />
+        Add new address
+      </button>
+
+      {newAddress && <AddressForm setNewAddress={setNewAddress} />}
+    </>
   );
 };

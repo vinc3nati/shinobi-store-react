@@ -125,7 +125,8 @@
 
 #product .btn-group,
 #product .btn-group > *,
-#product .btn {
+#product .btn,
+#search-page .btn-group, #search-page .btn {
   width: 100%;
 }
 @media only screen and (max-width: 768px) {

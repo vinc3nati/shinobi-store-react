@@ -11,6 +11,7 @@ import {
   getCart,
   getWishlist,
   deleteCartAll,
+  getAddress,
 } from "../utilities/API_REQUESTS";
 import { reducer, defaultValue } from "../utilities/reducer";
 import { ACTIONS } from "../utilities/constant";
@@ -61,6 +62,14 @@ const DataProvider = ({ children }) => {
             });
           }
 
+          const addressResponse = await getAddress({ token: user.token });
+          if (addressResponse.data.address) {
+            dispatch({
+              type: ACTIONS.SetAddress,
+              payload: { address: addressResponse.data.address },
+            });
+          }
+
           setLoader(false);
         }
       } catch (err) {
@@ -80,7 +89,7 @@ const DataProvider = ({ children }) => {
         type: ACTIONS.SetCart,
         payload: { cart: [] },
       });
-      navigate("/profile/orders", { replace: true });
+      navigate("/profile/orders");
     } catch (err) {
       console.error(err);
     }

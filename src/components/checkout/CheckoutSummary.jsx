@@ -3,9 +3,8 @@ import confetti from "canvas-confetti";
 import { useData } from "../../contexts/data-context";
 import { cartTotal, deliveryFee } from "../../utilities/cartCalculator";
 import { useAuth } from "../../contexts/auth-context";
-import { useNavigate } from "react-router-dom";
 
-export const CheckoutSummary = () => {
+export const CheckoutSummary = ({ selectedAddress }) => {
   const {
     state: { cart },
     handleOrders,
@@ -86,6 +85,7 @@ export const CheckoutSummary = () => {
             products: [...cart],
             amount: total,
             paymentId,
+            address: selectedAddress,
           };
           handleOrders(tempObj);
           Popper();
@@ -105,6 +105,8 @@ export const CheckoutSummary = () => {
     const paymentObject = new window.Razorpay(options);
     paymentObject.open();
   };
+
+  const isAddressPresent = Object.keys(selectedAddress).length !== 0;
 
   return (
     <div className="checkout-summary">
@@ -133,9 +135,18 @@ export const CheckoutSummary = () => {
         <span>&#8377; {total + delivery}</span>
       </div>
 
-      <button className="btn primary" onClick={displayRazorpay}>
+      <button
+        className="btn primary"
+        disabled={!isAddressPresent}
+        onClick={displayRazorpay}
+      >
         Checkout
       </button>
+      {!isAddressPresent && (
+        <p className="text-secondary text-center">
+          Please select your address!
+        </p>
+      )}
     </div>
   );
 };

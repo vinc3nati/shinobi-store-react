@@ -1,3 +1,4 @@
+import React, { useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import { Footer } from "./components/footer/Footer";
@@ -21,10 +22,18 @@ import { ProfileCard } from "./pages/Profile/ProfileCard";
 import { Address } from "./pages/Profile/Address";
 import { Orders } from "./pages/Profile/Orders";
 import { Checkout } from "./pages/Checkout/Checkout";
+import { Search } from "./pages/Search/Search";
 
 function App() {
   const { loader } = useData();
   let { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+    });
+  }, []);
+
   return (
     <>
       {loader && <Loader />}
@@ -35,6 +44,7 @@ function App() {
         <Route path="/signup" element={<Signup title="register" />} />
         <Route path="/products" element={<Products title="products" />} />
         <Route path="/product/:productId" element={<ProductDetails />} />
+        <Route path="/search" element={<Search />} />
         <Route
           path="/cart"
           element={
