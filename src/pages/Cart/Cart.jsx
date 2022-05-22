@@ -1,5 +1,7 @@
-import React, { useEffect } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { AiFillTag, AiOutlineCloseCircle } from "react-icons/ai";
+import { RiCoupon3Fill } from "react-icons/ri";
 import { CartCard } from "../../components/cart/CartCard";
 import { useData } from "../../contexts/data-context";
 import { useDocumentTitle } from "../../hooks/DocumentTitle";

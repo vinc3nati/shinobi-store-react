@@ -87,6 +87,7 @@
 
 }
 
+
 @media only screen and (max-width: 768px) {
   .cart-wrapper {
     flex-direction: column;

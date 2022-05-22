@@ -6,6 +6,7 @@
   flex: 0 0 250px;
   padding: 1rem 1.5rem;
   height: 100vh;
+  overflow-y: scroll;
   position: sticky;
   top: 60px;
   left: 0;
@@ -122,6 +123,14 @@
   object-fit: contain;
   background-color: #fff;
 }
+
+.slider-label {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
 
 #product .btn-group,
 #product .btn-group > *,

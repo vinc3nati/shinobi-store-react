@@ -62,11 +62,15 @@ export const Filters = () => {
         </div>
         <div className="filter">
           <div className="filter-heading">Price Slider</div>
+          <div className="slider-label">
+            <p>300</p>
+            <p>6000+</p>
+          </div>
           <input
             type="range"
             name="priceRange"
             className="slider"
-            min="0"
+            min="300"
             max={maxValue}
             value={state.filters.priceRange}
             onChange={(e) =>

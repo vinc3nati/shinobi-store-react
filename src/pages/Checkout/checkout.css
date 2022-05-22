@@ -59,3 +59,19 @@
 .checkout-summary > .btn {
     width: 100%;
 }
+
+.checkout-coupon {
+    padding: 1rem 1.5rem;
+    font-size: 1.8rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    cursor: pointer;
+    border: 1px solid var(--color-tertiary-dark);
+    border-radius: var(--border-radius-3);
+    transition: background-color 0.3s;
+  }
+  
+  .checkout-coupon:hover {
+    background-color: var(--color-tertiary-dark);
+  }

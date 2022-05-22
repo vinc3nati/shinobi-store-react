@@ -132,7 +132,7 @@
   .dropdown {
     width: 100%;
   }
-  .modal-content {
+  .account-content .modal-content {
     height: 75vh;
   }
   .input-form {
