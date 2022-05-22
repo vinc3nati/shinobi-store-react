@@ -83,6 +83,9 @@ background-color: var(--color-tertiary-dark);
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+    max-height: 32rem;
+    height: 100%;
+    overflow-y: scroll;
 }
 
 .checkout-address-container .radio-grp {
