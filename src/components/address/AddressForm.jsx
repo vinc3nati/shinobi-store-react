@@ -70,7 +70,7 @@ export const AddressForm = ({
   return (
     <>
       <div className="modal-container active">
-        <div className="modal-content with-header">
+        <div className="modal-content address with-header">
           <div className="modal-header">
             <div className="h4 text-primary">Address Details</div>
             <button className="modal-close" onClick={handleClose}></button>

@@ -20,32 +20,39 @@ export const Checkout = () => {
             <div className="checkout-address">
               {address.length !== 0 && (
                 <>
-                  <h6>Deliver To: </h6>
-                  {address.map((item) => (
-                    <div className="radio-grp" key={item._id}>
-                      <input
-                        type="radio"
-                        name="adress-input"
-                        id={item.name + "address"}
-                        value={item}
-                        onChange={() => setSelectedAddress(item)}
-                      />
-                      <label htmlFor={item.name + "address"}>
-                        <span className="radio-btn"></span>
-                        <div className="address-content">
-                          <p className="address-heading">
-                            <span className="text-bold">{item.name}</span>
-                          </p>
-                          <p>{item.street}</p>
-                          <p>
-                            {item.city},{item.state} {item.zipCode},{" "}
-                            {item.country}
-                          </p>
-                          <p>Contact: {item.mobile}</p>
-                        </div>
-                      </label>
-                    </div>
-                  ))}
+                  <h4>Deliver To: </h4>
+                  <div className="checkout-address-container">
+                    {address.map((item) => (
+                      <div
+                        className={`radio-grp ${
+                          selectedAddress === item ? "active" : ""
+                        }`}
+                        key={item._id}
+                      >
+                        <input
+                          type="radio"
+                          name="adress-input"
+                          id={item.name + "address"}
+                          value={item}
+                          onChange={() => setSelectedAddress(item)}
+                        />
+                        <label htmlFor={item.name + "address"}>
+                          <span className="radio-btn"></span>
+                          <div className="address-content">
+                            <p className="address-heading">
+                              <span className="text-bold">{item.name}</span>
+                            </p>
+                            <p>{item.street}</p>
+                            <p>
+                              {item.city},{item.state} {item.zipCode},{" "}
+                              {item.country}
+                            </p>
+                            <p>Contact: {item.mobile}</p>
+                          </div>
+                        </label>
+                      </div>
+                    ))}
+                  </div>
                 </>
               )}
               {address.length === 0 && (

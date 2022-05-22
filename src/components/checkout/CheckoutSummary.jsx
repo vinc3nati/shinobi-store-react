@@ -24,6 +24,7 @@ export const CheckoutSummary = ({ selectedAddress }) => {
   const total = cartTotal(cart);
   const delivery = deliveryFee(total);
   const finalCost = delivery + (total - (total * couponValue.discount) / 100);
+  console.log(total, couponValue.discount);
 
   const loadScript = async (url) => {
     return new Promise((resolve) => {
@@ -146,7 +147,7 @@ export const CheckoutSummary = ({ selectedAddress }) => {
         </label>
         <div className="checkout-details">
           <span>Price ({cart.length} item/s)</span>
-          <span>{finalCost}</span>
+          <span>{total}</span>
         </div>
         <div className="checkout-details">
           <span>Delivery Charges</span>
