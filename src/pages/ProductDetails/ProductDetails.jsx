@@ -78,7 +78,7 @@ export const ProductDetails = () => {
       }
       let response = null;
       if (addedToWishlist) {
-        response = await deleteWishlist({ itemId: _id, token: user.token });
+        response = await deleteWishlist({ productId: _id, token: user.token });
       } else {
         response = await postWishlist({
           product: { ...productToDisplay },
