@@ -17,8 +17,8 @@ export const Login = ({ title }) => {
   const from = location.state?.from || "/";
 
   const testLogin = {
-    email: "adarshbalika@gmail.com",
-    password: "adarshBalika123",
+    email: "vinit@shinobistore.com",
+    password: "vinitKanse123",
   };
 
   const handleChange = (e) => {

@@ -17,7 +17,7 @@ export const SearchBar = () => {
   const searchKeyWords = Object.keys(categories);
 
   const searchSubmit = () => {
-    if (searchQuery != "") {
+    if (searchQuery !== "") {
       navigate(`/search?searchQuery=${encodeURIComponent(searchQuery)}`);
       setActiveSearch(false);
       setSearchQuery("");

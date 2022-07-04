@@ -82,8 +82,8 @@ function App() {
           <Route path="orders" element={<Orders title="orders" />} />
         </Route>
         <Route path="/mock" element={<Mockman />} />
-        <Route path="*" element={<ErrorPage />} />
-        <Route path="/error" element={<ErrorPage />} />
+        <Route path="*" element={<ErrorPage title="error" />} />
+        <Route path="/error" element={<ErrorPage title="error" />} />
       </Routes>
       <ScrollTop />
       {pathname !== "/login" && pathname !== "/signup" && <Footer />}

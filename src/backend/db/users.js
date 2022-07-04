@@ -18,9 +18,9 @@ export const users = [
   },
   {
     _id: uuid(),
-    name: "John Doe",
-    email: "johndoe@gmail.com",
-    password: bcyrpt.hashSync("johnDoe123", 5),
+    name: "Vinit Kanse",
+    email: "vinit@shinobistore.com",
+    password: bcyrpt.hashSync("vinitKanse123", 5),
     createdAt: formatDate(),
     updatedAt: formatDate(),
   },
