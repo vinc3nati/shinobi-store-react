@@ -19,8 +19,7 @@
 @import url("./pages/Search/search.css");
 
 :root {
-  --border-radius-10: 10px;
-  --border-radius-14: 14px;
+  --color-white: #fff;
   --color-primary-accent: rgba(67, 97, 238, 0.2);
 }
 
