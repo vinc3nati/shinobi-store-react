@@ -114,6 +114,10 @@
   margin-top: 10px;
 }
 
+.card.vertical {
+  height: fit-content;
+}
+
 .vertical .card-image-container {
   height: 20rem;
 }
@@ -137,6 +141,33 @@
 #search-page .btn-group, #search-page .btn {
   width: 100%;
 }
+
+.product-pagination {
+  display: flex;
+  justify-content: center;
+  margin: 2rem;
+  gap: 1rem;
+}
+
+.pagination-item {
+  cursor: pointer;
+  padding: 0.6rem 1.25rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  border: 1px solid var(--color-primary-light);
+  border-radius: var(--border-radius-3);
+}
+
+.pagination-item.active {
+  background-color: var(--color-primary);
+  color: var(--color-tertiary);
+
+}
+
+.product-list .grid {
+  min-height: 100vh;
+}
+
 @media only screen and (max-width: 768px) {
   .product-aside {
     /* flex: 0 0 200px; */
