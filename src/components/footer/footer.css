@@ -1,3 +1,7 @@
+#footer {
+  background-color: var(--color-white);
+}
+
 #footer > * {
   margin: 1rem auto;
   text-align: center;
